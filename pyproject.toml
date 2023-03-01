@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "blog-web-project"
+version = "0.1.0"
+description = ""
+authors = ["Andrey Stoletov <stoletov314@gmail.com>"]
+readme = "README.md"
+packages = [{include = "blog_web_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = ">=3.2.4"
+django-environ = "^0.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
