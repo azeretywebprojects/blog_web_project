@@ -7,8 +7,8 @@ authors = ["Andrey Stoletov <stoletov314@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 django = ">=3.2.4"
-django-environ = "^0.9.0"
 setuptools = "^67.6.0"
+psycopg2-binary = "^2.9.6"
 
 
 [build-system]
