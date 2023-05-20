@@ -69,6 +69,7 @@ def home(request):
     return render(request, 'home.html', {'posts': posts})
 
 
+# TODO: Uncomment this class after creating correct User Model and adding Comment model
 #@login_required
 #def add_comment(request, pk):
     #post = get_object_or_404(Post, pk=pk)

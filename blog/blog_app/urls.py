@@ -6,7 +6,6 @@ from .views import (
     edit_post,
     delete_post,
     add_category,
-    # add_comment,
 )
 
 urlpatterns = [
@@ -18,7 +17,6 @@ urlpatterns = [
     path('category/add/', add_category, name='add_category'),
 ]
 
-# path('post/<int:pk>/comment/add/', login_required(add_comment), name='add_comment'),
 
 
 

@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 
-
+# TODO: Uncomment this class after creating correct User Model
 # class Comment(models.Model):
 #     post = models.ForeignKey("Post", on_delete=models.CASCADE, related_name="comments")
 #     body = models.TextField(max_length=1024)

@@ -25,16 +25,6 @@ class PostEditForm(forms.ModelForm):
             "text": forms.Textarea(attrs={"class": "form-control"})
         }
 
-#
-# class CommentCreateForm(forms.ModelForm):
-#     class Meta:
-#         model = Comment
-#         fields = ("body", "post")
-#
-#         widgets = {
-#             "title": forms.TextInput(attrs={"class": "form-control"}),
-#         }
-
 
 class CategoryCreateForm(forms.ModelForm):
     class Meta:
