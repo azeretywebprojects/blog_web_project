@@ -8,7 +8,8 @@ def add_post(request):
     if request.method == 'POST':
         form = PostCreateForm(request.POST)
         if form.is_valid():
-            post = form.save # меня это смущает
+            post = form.save()
+            post.save()
             return redirect('home')
     else:
         form = PostCreateForm()
@@ -29,13 +30,12 @@ def index(request):
     return render(request, 'home.html', {'posts': posts})
 
 
-@login_required
 def edit_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
         form = PostEditForm(request.POST, instance=post)
         if form.is_valid():
-            post = form.save(commit=False)
+            post = form.save()
             post.author = request.user
             post.save()
             return redirect('post_detail', pk=post.pk)
@@ -44,7 +44,6 @@ def edit_post(request, pk):
     return render(request, 'update_post.html', {'form': form})
 
 
-@login_required
 def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
@@ -69,7 +68,6 @@ def home(request):
     return render(request, 'home.html', {'posts': posts})
 
 
-# TODO: Uncomment this class after creating correct User Model and adding Comment model
 #@login_required
 #def add_comment(request, pk):
     #post = get_object_or_404(Post, pk=pk)
