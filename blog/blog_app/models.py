@@ -19,7 +19,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
+    @staticmethod
+    def get_absolute_url():
         return reverse('home')
 
 

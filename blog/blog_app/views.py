@@ -1,17 +1,16 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import PostCreateForm, PostEditForm, CategoryCreateForm
+from .forms import PostForm, CategoryCreateForm
 from .models import Post
 
 
 def add_post(request):
     if request.method == 'POST':
-        form = PostCreateForm(request.POST)
+        form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save()
+            form.save()
             return redirect('home')
     else:
-        form = PostCreateForm()
+        form = PostForm()
     return render(request, 'add_post.html', {'form': form})
 
 
@@ -32,12 +31,12 @@ def index(request):
 def edit_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
-        form = PostEditForm(request.POST, instance=post)
+        form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save()
             return redirect('post_detail', pk=post.pk)
     else:
-        form = PostEditForm(instance=post)
+        form = PostForm(instance=post)
     return render(request, 'update_post.html', {'form': form})
 
 
