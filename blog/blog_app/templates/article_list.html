@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title_tag }} - This is a blog post{% endblock %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <small>By:
+        {{ post.author.first_name }}
+        {{ post.author.last_name }} -
+        {{ post.post_date }}
+    </small><br/>
+    <hr>
+    <br/>
+    {{ post.text|safe }}
+    <br/><br/>
+
+    <a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary btn-sm">Edit Post</a>
+    <a href="{% url 'delete_post' post.pk %}" class="btn btn-secondary btn-sm">Delete Post</a>
+
+    <br><br/>
+
+    <button type="button" class="btn btn-secondary btn-sm" onclick="window.location.href='{% url 'home' %}'">Back</button>
+{% endblock %}
+
+
+

@@ -1,0 +1,21 @@
+
+<div class="logo">
+  <h1>My Blog</h1>
+  <img src="logo.png" alt="My Logo">
+</div>
+
+<style>
+  .logo {
+    text-align: center;
+  }
+
+  .logo h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3em;
+    color: #FF9900;
+  }
+
+  .logo img {
+    width: 200px;
+  }
+</style>

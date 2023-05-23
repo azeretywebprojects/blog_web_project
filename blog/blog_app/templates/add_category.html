@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Create a new blog category{% endblock %}
+{% block content %}
+
+
+<h1>Add Category</h1>
+<br/><br/>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <button class="btn btn-secondary btn-sm">Add Category</button>
+                <br/><br/>
+<button type="button" class="btn btn-secondary btn-sm" onclick="window.location.href='{% url 'home' %}'">Back</button>
+
+<br/><br/>
+</div>
+
+{% endblock %}

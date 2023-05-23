@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Create a new blog post{% endblock %}
+{% block content %}
+
+<h1>Add post...</h1>
+<br/><br/>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <button class="alert alert-secondary">Post</button>
+    <br/><br/>
+    <a href="{% url 'home' %}" class="alert alert-secondary" role="alert">Back</a>
+
+    <br/><br/>
+</form>
+</div>
+{% endblock %}
