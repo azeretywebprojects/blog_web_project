@@ -3,17 +3,16 @@
 {% block content %}
 
 
-<h1>Add Category</h1>
-<br/><br/>
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_ul }}
-        <button class="btn btn-secondary btn-sm">Add Category</button>
-                <br/><br/>
-<button type="button" class="btn btn-secondary btn-sm" onclick="window.location.href='{% url 'home' %}'">Back</button>
-
-<br/><br/>
-</div>
+    <h1>Add Category</h1>
+    <br/><br/>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_ul }}
+            <button class="btn btn-secondary btn-sm">Add Category</button>
+            <br/><br/>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="window.location.href='{% url 'home' %}'">Back</button>
+        </form>
+    </div>
 
 {% endblock %}

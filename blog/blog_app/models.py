@@ -1,7 +1,6 @@
 from django.db import models
-from django.utils import timezone
 from django.urls import reverse
-
+from django.utils import timezone
 
 # class Comment(models.Model):
 #     post = models.ForeignKey("Post", on_delete=models.CASCADE, related_name="comments")
@@ -21,16 +20,16 @@ class Category(models.Model):
 
     @staticmethod
     def get_absolute_url():
-        return reverse('home')
+        return reverse("home")
 
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField(max_length=2048)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    category = models.ForeignKey("Category", on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
     update_at = models.DateTimeField(default=timezone.now)
 
     @staticmethod
     def get_absolute_url():
-        return reverse('home')
+        return reverse("home")
