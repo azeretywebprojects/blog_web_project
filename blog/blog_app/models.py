@@ -26,7 +26,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField(max_length=2048)
-    category = models.ForeignKey("Category", on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
     update_at = models.DateTimeField(default=timezone.now)
 

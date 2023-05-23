@@ -9,7 +9,6 @@ def add_post(request):
         form = PostCreateForm(request.POST)
         if form.is_valid():
             post = form.save()
-            post.save()
             return redirect('home')
     else:
         form = PostCreateForm()
@@ -36,7 +35,6 @@ def edit_post(request, pk):
         form = PostEditForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save()
-            post.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostEditForm(instance=post)
