@@ -7,12 +7,12 @@
     <br/><br>
     <div class="form-group">
         <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Add comment</button>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Add comment</button>
             <br><br/>
             <button type="button" class="btn btn-secondary btn-sm" onclick="window.location.href='{% url 'home' %}'">Back</button>
-
+        </form>
     </div>
 
 
