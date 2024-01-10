@@ -10,16 +10,19 @@ django = ">=4.0"
 setuptools = "^68.0.0"
 psycopg2-binary = "^2.9.6"
 django-ckeditor = "^6.5.1"
-mixer = "^7.2.2"
-
-
+pytest-factoryboy = "^2.3.1"
+psycopg2 = "^2.9.7"
 
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.3.2"
 pytest = "^7.4.0"
 pytest-django = "^4.5.2"
-pytest-postgresql = "^5.0.0"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "core.settings"
+pythonpath = [".", "blog_web_project"]
+python_files =["test_*.py"]
 
 [build-system]
 requires = ["poetry-core"]
@@ -56,8 +59,3 @@ exclude = '''
   | .*/tests/.*
 )$
 '''
-
-[tool.pytest.ini_options]
-pythonpath = [".", "blog"]
-python_files = ["test_*.py"]
-DJANGO_SETTINGS_MODULE = "blog.settings"

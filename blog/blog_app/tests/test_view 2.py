@@ -2,11 +2,17 @@
 # from django.contrib.auth.models import User
 # from django.test import Client
 # from django.urls import reverse
+# from mixer.backend.django import mixer
 #
 #
 # @pytest.fixture
 # def client():
 #     return Client()
+#
+#
+# @pytest.fixture
+# def user():
+#     return mixer.blend(User)
 #
 #
 # @pytest.mark.django_db
