@@ -3,14 +3,15 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
-# class Comment(models.Model):
-#     post = models.ForeignKey("Post", on_delete=models.CASCADE, related_name="comments")
-#     body = models.TextField(max_length=1024)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#
-#     def __str__(self):
-#         return self.body
+
+class Comment(models.Model):
+    post = models.ForeignKey("Post", on_delete=models.CASCADE, related_name="comments")
+    body = models.TextField(max_length=1024)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.body
 
 
 class Category(models.Model):
