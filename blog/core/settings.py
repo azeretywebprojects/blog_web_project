@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "core",
     "blog_app",
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
@@ -95,6 +96,28 @@ STATIC_ROOT = BASE_DIR / "static"
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "Custom",
+        "toolbar_Custom": [
+            ["Bold", "Italic", "Underline"],
+            ["Link", "Unlink"],
+            ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote"],
+            ["RemoveFormat", "Source"],
+            ["Subscript", "Superscript"],
+            ["JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"],
+            ["Image", "Table", "HorizontalRule"],
+            ["Format", "FontSize"],
+            ["TextColor", "BGColor"],
+            ["Maximize"],
+            ["Undo", "Redo"],
+            ["Styles", "Format", "Font", "FontSize"],
+            ["Smiley", "SpecialChar"],
+        ],
+    },
+}
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

@@ -5,16 +5,24 @@ description = ""
 authors = ["Andrey Stoletov <stoletov314@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
-django = ">=3.2.4"
-setuptools = "^67.6.0"
+python = "^3.11"
+django = ">=4.0"
+setuptools = "^68.0.0"
 psycopg2-binary = "^2.9.6"
-pytest = "^7.3.1"
 django-ckeditor = "^6.5.1"
+pytest-factoryboy = "^2.3.1"
+psycopg2 = "^2.9.7"
 
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.3.2"
+pytest = "^7.4.0"
+pytest-django = "^4.5.2"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "core.settings"
+pythonpath = [".", "blog_web_project"]
+python_files =["test_*.py"]
 
 [build-system]
 requires = ["poetry-core"]
