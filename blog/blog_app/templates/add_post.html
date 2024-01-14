@@ -2,17 +2,24 @@
 {% block title %}Create a new blog post{% endblock %}
 {% block content %}
 
-    <h1>Add post...</h1>
-    <br/><br/>
-    <div class="form-group">
+    <div class="container my-4">
+        <h1 class="display-4">Add Post</h1>
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_ul }}
-            <button class="alert alert-secondary">Post</button>
-            <br/><br/>
-            <a href="{% url 'home' %}" class="alert alert-secondary" role="alert">Back</a>
 
-            <br/><br/>
+            <div class="form-group">
+                <label for="{{ form.title.id_for_label }}" class="form-label">Title:</label>
+                {{ form.title }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.text.id_for_label }}" class="form-label">Content:</label>
+                {{ form.text }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Post</button>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
         </form>
     </div>
+
 {% endblock %}

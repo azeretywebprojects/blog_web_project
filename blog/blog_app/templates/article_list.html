@@ -14,10 +14,48 @@
     {{ post.text|safe }}
     <br/><br/>
 
+    <!-- Display like and dislike counts on the buttons -->
+    <button id="like-btn-{{ post.id }}" onclick="likePost({{ post.id }}, 'like')" style="background-color: lightblue; color: white;">
+        Like <span id="likes-count-{{ post.id }}">0</span>
+    </button>
+    <button id="dislike-btn-{{ post.id }}" onclick="likePost({{ post.id }}, 'dislike')" style="background-color: lightcoral; color: white;">
+        Dislike <span id="dislikes-count-{{ post.id }}">0</span>
+    </button>
+
+    <br><br/>
     <a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary btn-sm">Edit Post</a>
     <a href="{% url 'delete_post' post.pk %}" class="btn btn-secondary btn-sm">Delete Post</a>
 
     <br><br/>
 
     <a type="button" class="btn btn-secondary btn-sm" href="{% url 'home' %}">Back</a>
+
+    <script>
+        function likePost(postId, action) {
+            const csrfToken = "{{ csrf_token }}";
+
+            fetch(`/like_post/${postId}/${action}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                credentials: 'same-origin'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const likesCount = document.getElementById(`likes-count-${postId}`);
+                    const dislikesCount = document.getElementById(`dislikes-count-${postId}`);
+
+                // Change the color to blue and add fade-in animation
+                    likesCount.style.color = 'blue';
+                    dislikesCount.style.color = 'blue';
+                    likesCount.style.transition = 'color 0.5s ease';
+                    dislikesCount.style.transition = 'color 0.5s ease';
+
+                    likesCount.innerText = data.likes;
+                    dislikesCount.innerText = data.dislikes;
+                });
+        }
+    </script>
 {% endblock %}

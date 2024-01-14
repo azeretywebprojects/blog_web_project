@@ -1,7 +1,8 @@
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CategoryCreateForm, PostForm
-from .models import Post
+from .models import Like, Post
 
 
 def add_post(request):
@@ -63,6 +64,23 @@ def add_category(request):
 def home(request):
     posts = Post.objects.all()
     return render(request, "home.html", {"posts": posts})
+
+
+def like_post(request, post_id, action):
+    post = get_object_or_404(Post, id=post_id)
+    user = request.user
+
+    if action == "like":
+        Like.objects.create(user=user, post=post, like_status=True)
+        post.like += 1
+    elif action == "dislike":
+        Like.objects.create(user=user, post=post, like_status=False)
+        post.dislike += 1
+
+    post.save()
+
+    data = {"like": post.like, "dislike": post.dislike}
+    return JsonResponse(data)
 
 
 # @login_required
