@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-
 {% block title %}{{ post.title_tag }} - This is a blog post{% endblock %}
-
 {% block content %}
+    <!-- Display the title of the blog post -->
     <h1>{{ post.title }}</h1>
+    <!-- Display information about the author and post date -->
     <small>By:
         {{ post.author.first_name }}
         {{ post.author.last_name }} -
@@ -11,13 +11,26 @@
     </small><br/>
     <hr>
     <br/>
+    <!-- Display the content of the blog post (allowing HTML) -->
     {{ post.text|safe }}
     <br/><br/>
-
+    <a href="{% url 'add_comment' post.pk %}" class="btn btn-secondary btn-sm">Add Comment</a>
     <a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary btn-sm">Edit Post</a>
     <a href="{% url 'delete_post' post.pk %}" class="btn btn-secondary btn-sm">Delete Post</a>
-
     <br><br/>
-
     <a type="button" class="btn btn-secondary btn-sm" href="{% url 'home' %}">Back</a>
+    <br><br/>
+    <!-- Display the comments for the post -->
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in post.comments.all %}
+            <li>
+                <strong>
+                    {{ comment.created_at }}
+                </strong>
+                <br/>
+                {{ comment.body }}
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
